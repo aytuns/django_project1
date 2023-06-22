@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Add the new application. Object creted in /polls/app.py
+    'polls.apps.PollsConfig',
 ]
 
 MIDDLEWARE = [
