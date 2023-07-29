@@ -1,0 +1,192 @@
+*{
+	box-sizing: border-box;
+	font-family: sans-serif serif;
+}
+
+.main-container{
+
+	width: 100%;
+}
+
+.container-flex{
+   display: flex;
+   justify-content: center;
+}
+
+.container-flex1{
+
+	padding: 10px;
+	color: #959494;
+	border-radius: 8px;
+	box-shadow: 10px 6px 6px 5px rgba(0, 0, 0, 0.2), 0 6px 10px 5px rgba(0, 0, 0, 0.19);
+	
+}
+
+.container-flex1 h2{
+
+	text-align: center;
+}
+
+.container-flex2{
+
+	background-color: #0069f7;
+	/* margin-left: 30px; */
+	padding: 22px;
+	border-radius: 5px;
+	box-shadow: 10px 6px 6px 5px rgba(0, 0, 0, 0.2), 0 6px 10px 5px rgba(0, 0, 0, 0.19);
+		
+}
+
+.container-flex2 h2{
+
+	text-align: center;
+	color: white;
+	margin-bottom: 50px;
+}
+
+.container-flex2 p{
+
+	text-align: center;
+	padding: 20px;
+	color: white;
+}
+
+.fa-solid{
+	font-size: 20px;
+}
+
+.fa-location-dot{
+     padding-right: 10px;
+	 vertical-align: sub;
+}
+
+.fa-phone{
+	margin-right: 10px;
+	margin-left: 20px;
+}
+
+.fa-at{
+	margin-right: 10px;
+	margin-left: -37px;
+	vertical-align: sub;
+}
+
+span{
+	font-size: 18px;
+	font-weight: bold;
+	
+}
+
+.Address0{
+	vertical-align: super;
+	line-height: 0.1;
+}
+
+.here{
+	margin-top: -40%;
+	margin-left: -43%;
+	
+}
+
+.email{
+	vertical-align: super;
+	
+	
+}
+
+.nicho{
+	margin-left: 27%;
+	
+}
+
+.p-line1{
+	margin-bottom: -5%;
+}
+
+.p-line3{
+	line-height: 0.1;
+}
+
+.p-line3 a{
+	color: white;
+	text-decoration: none;
+}
+
+.sp{
+	font-size: 15px;
+	font-weight: lighter;
+}
+
+.underline{
+	border-bottom: 1px solid white;
+}
+
+.fa-earth-americas{
+	margin-right: 10px;
+	margin-left: -40%;
+	vertical-align: sub;
+}
+
+.p-line4{
+
+	line-height: 0.2;
+}
+
+.p-line4 a{
+	color: white;
+	text-decoration: none;
+}
+
+.beluso{
+
+	margin-left: -8%;
+}
+
+.website{
+   vertical-align: super;
+}
+
+/* .sub_container{
+
+	box-shadow: 10px 10px 5px lightblue inset outset;
+	width: 80%;
+	justify-content: space-evenly;
+} */
+.sub_container h1{
+
+	text-align: center;
+	width: 100%;
+	color: #828080;
+}
+
+input{
+	width: 95%;
+	padding: 8px;
+}
+
+input:focus{
+
+	outline: 2px solid #0554ffee;
+	border-radius: 2px;
+	border: 1px #0554ffee;
+}
+
+textarea{
+
+	width: 95%;
+}
+
+textarea:focus{
+	outline: 2px solid #0554ffee;
+	border-radius: 2px;
+	border: 1px #0554ffee;
+}
+
+button[type="submit"]{
+	padding: 5px 30px;
+	background-color: #0069f7;
+	border: none;
+	border-radius: 5px;
+	color: white;
+
+}

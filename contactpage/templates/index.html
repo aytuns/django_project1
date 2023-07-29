@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+	<script src="https://kit.fontawesome.com/0700337eca.js" crossorigin="anonymous"></script>
+	<title>contact-us</title>
+</head>
+
+<body>
+
+	<div class="main-container">
+		<div class="sub_container">
+
+			<h1>Get in Touch With Us</h1>
+			<div class="container-flex">
+
+				<div class="container-flex1">
+
+					<h2>Write Us</h2>
+					<form action="" method="post">
+						{% csrf_token %}
+						<input type="text" name="fullname" maxlength="300" placeholder="Fullname" required> <br> <br>
+						<input type="email" name="email" maxlength="255" placeholder="example@xyz.com"> <br> <br>
+						<input type="tel" name="phonenumber" placeholder="tel +xxx xxx xxx xxxx"> <br> <br>
+						<input type="text" name="subject" placeholder="Subject"> <br> <br>
+						<input type="text" name="location" placeholder="Enter Location"> <br> <br>
+						<textarea name="message" id="" cols="40" rows="10" placeholder="Your Message Here..."
+							required></textarea> <br> <br>
+						<button type="submit">Send</button>
+					</form>
+				</div>
+
+				<div class="container-flex2">
+
+					<h2>Contact Us</h2>
+
+					<p class="p-line1">
+						<i class="fa-sharp fa-solid fa-location-dot"></i>
+						<span class="Address0">Address:<span class="sp">  Lagos, Nigeria<br><span class="sp here"></span>
+							</span></span>
+					</p>
+
+					<p class="p-line2">
+						<i class="fa-solid fa-phone"></i><span>Phone: </span><span class="sp">+234-806-013-0890</span>
+					</p>
+
+					<p class="p-line3">
+						<i class="fa-solid fa-at"></i>
+						<span class="email">Email:</span>
+						<span class="sp underline nicho"><br><a
+								href="mailto: ayotunde.jerry@gmail.com">ayotunde.jerry@gmail.com</a> </span>
+					</p>
+
+					<p class="p-line4">
+						<i class="fa-sharp fa-solid fa-earth-americas"></i><span class="website">Website:</span> <br>
+						<span class="sp underline beluso"><a href="www.Tunde.com">www.Tunde.com</a> </span>
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>
