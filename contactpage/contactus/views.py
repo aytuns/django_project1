@@ -63,7 +63,7 @@ class ContactForm(View):
 		sendemail2 = EmailMessage(f"New Message: {subject}",
 			      				f"New Message from {fullname}, see attachment.",
 								EMAIL_HOST_USER,
-            					['ayotunde.jerry@gmail.com'] )
+            					['anything@gmail.com'] )
 		sendemail2.attach_file(pdfOutput)
 		sendemail2.send()		
 
