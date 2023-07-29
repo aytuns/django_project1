@@ -118,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [BASE_DIR / 'static', '/static/']
+STATICFILES_DIRS = [BASE_DIR / "static", "static/"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -130,6 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'example@gmail.com'
-EMAIL_HOST_PASSWORD = '**********'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
+EMAIL_HOST_PASSWORD = '******'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
