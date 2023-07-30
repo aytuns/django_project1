@@ -4,6 +4,7 @@ from .models import ContactInfo
 from django.core.mail import EmailMessage
 from contactpage.settings import EMAIL_HOST_USER
 from fpdf import FPDF
+from django.template.loader import get_template
 
 # Create your views here.
 
@@ -50,40 +51,37 @@ class ContactForm(View):
 		pdf.multi_cell(w=180,h=10,new_x='LMARGIN', new_y='NEXT',
 			txt=f"The message: {message}")
 
+		# Save file to local directory
 		pdfOutput = f'{fullname}.pdf'
-		pdf.output(pdfOutput)
+		pdf.output(f"PDFdownloads/{pdfOutput}","F")
 
-		# Create methods to send email to user and admin
-		sendemail1 = EmailMessage(f"Message: {subject}",
-			    				f"Hello {fullname} your request has been received.",
+		#Create methods to send email to user and admin
+
+		# Retrieve templates from template folder
+		htmlMail_user = get_template('send_to_user.html')
+		htmlMail_admin = get_template('send_to_admin.html')
+		htmlResponse = get_template('user_response.html')
+		content = {'subject':subject,'fullname':fullname}
+
+		html_content_user = htmlMail_user.render(content)
+		html_content_admin = htmlMail_admin.render(content)
+		user_response = htmlResponse.render(content)
+
+		# Send mails
+		sendEmail_user = EmailMessage(f"Message: {subject}",
+			    				html_content_user,
 								EMAIL_HOST_USER,
             					[myemail] )
-		sendemail1.send()
+		sendEmail_user.send()
 
-		sendemail2 = EmailMessage(f"New Message: {subject}",
-			      				f"New Message from {fullname}, see attachment.",
+		sendEmail_admin = EmailMessage(f"New Message: {subject}",
+			      				html_content_admin,
 								EMAIL_HOST_USER,
-            					['anything@gmail.com'] )
-		sendemail2.attach_file(pdfOutput)
-		sendemail2.send()		
+            					['aythingy@gmail.com'] )
+		sendEmail_admin.attach_file(f"PDFdownloads/{pdfOutput}")
+		sendEmail_admin.send()		
 
-		return HttpResponse(f'''
-	    	<!DOCTYPE html>
-			<html lang="en">
-			<head>
-			<meta charset="UTF-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		    <script src="https://kit.fontawesome.com/0700337eca.js" crossorigin="anonymous"></script>
-			<title>MESSAGE SENT</title>
-			</head>
-			<body style = "margin:auto; padding:5% 0;display:flex;width:90%;text-align:center;background:white">
-			<div style = "width:100%; padding: 10px;background:lightblue;">
-			<h1>Hello {fullname}, your Message has been sucessfully sent.</h1>
-			</div>
-			</body>
-			</html>
-			''')
+		return HttpResponse(user_response)
 
 	def get(self, request):
 		return render(request, 'index.html')
