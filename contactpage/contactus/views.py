@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 from .models import ContactInfo
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
 from contactpage.settings import EMAIL_HOST_USER
 from fpdf import FPDF
 from django.template.loader import get_template
@@ -48,8 +48,10 @@ class ContactForm(View):
 			txt=f"Location: {location}")
 		pdf.cell(w=180,h=10,new_x='LMARGIN', new_y='NEXT',
 			txt=f"Subject of the message: {subject}")
+		pdf.cell(w=180,h=10,new_x='LMARGIN', new_y='NEXT',
+			txt="The message:")
 		pdf.multi_cell(w=180,h=10,new_x='LMARGIN', new_y='NEXT',
-			txt=f"The message: {message}")
+			txt=f"{message}")
 
 		# Save file to local directory
 		pdfOutput = f'{fullname}.pdf'
@@ -57,29 +59,32 @@ class ContactForm(View):
 
 		#Create methods to send email to user and admin
 
-		# Retrieve templates from template folder
+		# --Retrieve templates from template folder
 		htmlMail_user = get_template('send_to_user.html')
 		htmlMail_admin = get_template('send_to_admin.html')
 		htmlResponse = get_template('user_response.html')
+
 		content = {'subject':subject,'fullname':fullname}
 
 		html_content_user = htmlMail_user.render(content)
 		html_content_admin = htmlMail_admin.render(content)
 		user_response = htmlResponse.render(content)
 
-		# Send mails
-		sendEmail_user = EmailMessage(f"Message: {subject}",
-			    				html_content_user,
+		# --Send mails
+		sendEmail_user = EmailMultiAlternatives(f"Message: {subject}",
+								html_content_user,
 								EMAIL_HOST_USER,
-            					[myemail] )
+								[myemail] )
+		sendEmail_user.attach_alternative(html_content_user,"text/html")
 		sendEmail_user.send()
 
-		sendEmail_admin = EmailMessage(f"New Message: {subject}",
-			      				html_content_admin,
+		sendEmail_admin = EmailMultiAlternatives(f"New Message: {subject}",
+								html_content_admin,
 								EMAIL_HOST_USER,
-            					['aythingy@gmail.com'] )
+								[EMAIL_HOST_USER] )
+		sendEmail_admin.attach_alternative(html_content_admin,"text/html")
 		sendEmail_admin.attach_file(f"PDFdownloads/{pdfOutput}")
-		sendEmail_admin.send()		
+		sendEmail_admin.send()
 
 		return HttpResponse(user_response)
 

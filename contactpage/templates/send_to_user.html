@@ -1,6 +1,10 @@
 {% load static %}
-{% block title %}Message: {{subject}}{% endblock %}
 {% block content %}
-  Hello {{ fullname }}, your message has been received
-{% endblock %}
 
+<body style="margin:auto; padding:5% 1%;display:flex;width:90%;text-align:center;background:lightblue">
+	<div style="width:100%; padding: 10px;background:white;">
+		<h1>Hello {{ fullname }}, your message has been received</h1>
+	</div>
+</body>
+
+{% endblock %}
