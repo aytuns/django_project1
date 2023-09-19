@@ -6,23 +6,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'style.css' %}">
-
+	
 
 	<title>contact-us</title>
 </head>
 
 <body>
-
 	<div class="main-container">
 		<div class="sub_container">
 
 			<h1>Get in Touch With Us</h1>
 			<div class="container-flex">
-
+				
 				<div class="container-flex1">
-
+					<img id="gifloading" src='{{STATIC_URL}}/static/loading.gif' no repeat/>
 					<h2>Write Us</h2>
-					<form action="" method="post">
+					<form action="" method="post" onsubmit="gifload()">
 						{% csrf_token %}
 						<input type="text" name="fullname" maxlength="300" placeholder="Fullname" required> <br> <br>
 						<input type="email" name="email" maxlength="255" placeholder="example@xyz.com"> <br> <br>
@@ -32,6 +31,7 @@
 						<textarea name="message" id="" cols="40" rows="10" placeholder="Your Message Here..."
 							required></textarea> <br> <br>
 						<button type="submit">Send</button>
+						
 					</form>
 				</div>
 
@@ -69,6 +69,7 @@
 
 	</div>
 	<script src="https://kit.fontawesome.com/0700337eca.js" crossorigin="anonymous"></script>
+	<script src="{% static 'loading.js' %}"></script>
+	
 </body>
-
 </html>
