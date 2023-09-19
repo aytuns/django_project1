@@ -2,8 +2,9 @@ from django.contrib import admin
 from .models import *
 
 @admin.register(Post)
+
 class Postadmin(admin.ModelAdmin):
-    list_display = ('title', 'body', 'date_created', 'updated_on', 'author','category')
+    list_display = ('title', 'body', 'date_created', 'updated_on', 'author','category','status')
 
 @admin.register(Category)
 class Category(admin.ModelAdmin):
