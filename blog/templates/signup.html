@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+	
+
+	<title>LOG IN</title>
+</head>
+
+<body>
+	<div class="main-container">
+		<div class="sub_container">
+
+			<h1>SIGN UP</h1>
+			<div class="container-flex">
+				
+				<div class="container-flex1">
+					<h2></h2>
+					<form action="" method="post" onsubmit="">
+						{% csrf_token %}
+
+						<p>
+							{{ user_form.as_p }}
+							{{ author_form.as_p }}
+						</p>
+
+						{% comment %} <input type="text" name="fullname" maxlength="300" placeholder="Fullname" required> <br> <br>
+						<input type="email" name="email" maxlength="255" placeholder="example@xyz.com"> <br> <br>
+						<input type="tel" name="phonenumber" placeholder="tel +xxx xxx xxx xxxx"> <br> <br>
+						<input type="text" name="subject" placeholder="Subject"> <br> <br>
+						<input type="text" name="location" placeholder="Enter Location"> <br> <br>
+						<textarea name="message" id="" cols="40" rows="10" placeholder="Your Message Here..."
+							required></textarea> <br> <br> {% endcomment %}
+						<button type="submit"  value="Submit">Send</button>
+						
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<script src="https://kit.fontawesome.com/0700337eca.js" crossorigin="anonymous"></script>
+
+	
+</body>
+</html>

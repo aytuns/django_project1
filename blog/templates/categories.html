@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+                    <p class="lead mb-0">CATEGORIES</p>
                 </div>
             </div>
         </header>
@@ -31,26 +31,10 @@
         <!-- Page content-->
         <div class="container">
             <div class="row">
-                <!-- Blog entries-->
-                <div class="col-lg-8">
-                    <!-- Featured blog post-->
-
-					<div class="card mb-4">
-
-                        <a href="#!"><img class="card-img-top" src="{{post_cat.upload_image.url}}" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">{{ post_cat.date_created |date:"D d F Y"}}</div>
-                            <h2 class="card-title">{{post_cat.title}}</h2>
-                            <p class="card-text">{{post_cat.body |slice:":200"}}</p>
-                            <a class="btn btn-primary" href="{% url 'details' post_cat.pk %}">Read more →</a>
-						
-                        </div>
-                    </div>
-
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
 
-						{% for post in allpost %}
+						{% for post in cat_post %}
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
@@ -60,14 +44,12 @@
                                     <h2 class="card-title h4">{{post.title}}</h2>
                                     <p class="card-text">{{post.body |slice:":100"}}</p>
                                     <a class="btn btn-primary" href="{% url 'details' post.pk %}">Read more →</a>
-									
                                 </div>
                             </div>
 						</div>
 						{% endfor %}
 
                     </div>
-
 
                     <!-- Pagination-->
                     <nav aria-label="Pagination">
@@ -83,9 +65,6 @@
                         </ul>
                     </nav>
                 </div>
-				
-				{% include 'sidebar.html' %}
-				
             </div>
         </div>
 		{% endif %}

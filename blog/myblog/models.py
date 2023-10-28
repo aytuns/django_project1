@@ -12,6 +12,7 @@ class Author(models.Model):
 	profile = models.ImageField(upload_to='media/authors/')
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	display_name = models.CharField(max_length=50)
+	about = models.TextField(max_length=500,default="I AM AN AUTHOR")
 
 	def __str__(self):
 		return self.display_name
@@ -35,3 +36,13 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class Comments(models.Model):
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+	comment_body = models.TextField(max_length=400)
+	commenter_name = models.CharField(max_length=300)
+	date_created = models.DateTimeField(auto_now_add=False)
+	user = models.ForeignKey(Author, on_delete=models.CASCADE, default = "comments")
+
+	def __str__(self):
+		return self.comment_body
